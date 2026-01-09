@@ -1,0 +1,108 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #18442c;
+  --ifm-color-primary-dark: #29784c;
+  --ifm-color-primary-darker: #277148;
+  --ifm-color-primary-darkest: #205d3b;
+  --ifm-color-primary-light: #33925d;
+  --ifm-color-primary-lighter: #359962;
+  --ifm-color-primary-lightest: #3cad6e;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme='dark'] {
+  --ifm-color-primary: #25c2a0;
+  --ifm-color-primary-dark: #21af90;
+  --ifm-color-primary-darker: #1fa588;
+  --ifm-color-primary-darkest: #1a8870;
+  --ifm-color-primary-light: #29d5b0;
+  --ifm-color-primary-lighter: #32d8b4;
+  --ifm-color-primary-lightest: #4fddbf;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+/* Circular navbar logo */
+.navbar__brand img {
+  border-radius: 50% !important;
+  object-fit: cover;
+}
+
+/* Shadcn-style search bar */
+.searchContainer .searchInputWrapper {
+  max-width: 2200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.searchContainer input {
+  width: 100% !important;
+  border: 1px solid hsl(214, 32%, 91%) !important;
+  border-radius: 18px !important;
+  background-color: hsl(0, 0%, 100%) !important;
+  padding: 1.5rem 1.25rem !important;
+  font-size: 1.75rem !important;
+  line-height: 2rem !important;
+  height: 120px !important;
+  transition: all 0.12s ease-in-out !important;
+  box-shadow: 0 20px 60px rgba(34, 41, 47, 0.12) !important;
+}
+
+.searchContainer input:focus {
+  outline: none !important;
+  border-color: hsl(262, 83%, 58%) !important;
+  box-shadow: 0 20px 60px rgba(38, 99, 255, 0.16) !important;
+  transform: translateY(-2px) !important;
+}
+
+.searchContainer input::placeholder {
+  color: hsl(215, 16%, 47%) !important;
+}
+
+/* Dark mode adjustments */
+[data-theme='dark'] .searchContainer input {
+  background-color: hsl(224, 71%, 6%) !important;
+  border-color: hsl(215, 28%, 17%) !important;
+  color: hsl(213, 31%, 91%) !important;
+}
+
+[data-theme='dark'] .searchContainer input:focus {
+  border-color: hsl(263, 70%, 50%) !important;
+  box-shadow: 0 20px 60px rgba(210, 54, 105, 0.16) !important;
+}
+
+[data-theme='dark'] .searchContainer input::placeholder {
+  color: hsl(215, 20%, 65%) !important;
+}
+
+/* Reduce height on mobile so it doesn't take too much space */
+@media (max-width: 640px) {
+  .searchContainer .searchInputWrapper { max-width: 100%; }
+  .searchContainer input { height: 64px !important; font-size: 1.125rem !important; padding: 0.75rem 1rem !important; }
+}
+
+/* Homepage-specific search overrides (swizzled SearchBar wrapper) */
+.search-homepage .navbar__search-input {
+  height: 120px !important;
+  font-size: 1.75rem !important;
+  padding: 1.5rem 1.25rem !important;
+  border-radius: 18px !important;
+  box-shadow: 0 20px 60px rgba(34, 41, 47, 0.12) !important;
+}
+
+@media (max-width: 640px) {
+  .search-homepage .navbar__search-input {
+    height: 64px !important;
+    font-size: 1.125rem !important;
+    padding: 0.75rem 1rem !important;
+  }
+}
+
+
