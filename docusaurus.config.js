@@ -109,10 +109,9 @@ const config = {
           {
             title: 'Docs',
             items: [
-              {
-                label: 'Tutorial',
-                to: '/docs/intro',
-              },
+              { label: 'Microsoft', to: '/docs/microsoft' },
+              { label: 'Web Tools', to: '/docs/web-tools' },
+              { label: 'Security', to: '/docs/security' },
             ],
           },
         ],

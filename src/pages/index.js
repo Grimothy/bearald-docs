@@ -41,13 +41,6 @@ const categories = [
     icon: '📚',
     link: '/docs/research',
     color: 'orange'
-  },
-  {
-    title: 'Quick Tips',
-    description: 'Handy snippets, shortcuts, and productivity hacks.',
-    icon: '⚡',
-    link: '/docs/tips',
-    color: 'cyan'
   }
 ];
 
