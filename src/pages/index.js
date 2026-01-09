@@ -64,8 +64,8 @@ function HomepageHeader() {
             {siteConfig.title}
           </Heading>
           <p className={styles.heroSubtitle}>{siteConfig.tagline}</p>
-          <div className={styles.searchContainer}>
-            <div className={styles.searchInputWrapper}>
+          <div className={`${styles.searchContainer} searchContainer`}>
+            <div className={`${styles.searchInputWrapper} searchInputWrapper`}>
               <SearchBar />
             </div>
           </div>

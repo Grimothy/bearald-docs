@@ -97,12 +97,6 @@ const config = {
         },
         items: [
           {
-            type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
-            position: 'left',
-            label: 'Tutorial',
-          },
-          {
             href: 'https://github.com/Grimothy?tab=repositories',
             label: 'GitHub',
             position: 'right',

@@ -4,29 +4,29 @@
  * work well for content-centric websites.
  */
 
-/* You can override the default Infima variables here. */
+/* You can override the default Infima variables here. (Palette derived from uploaded image: purple → magenta → navy) */
 :root {
-  --ifm-color-primary: #18442c;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
+  --ifm-color-primary: #7C3B8A; /* deep violet */
+  --ifm-color-primary-dark: #5B2A6A; /* rich plum */
+  --ifm-color-primary-darker: #3F1E49; /* muted indigo */
+  --ifm-color-primary-darkest: #1D0F25; /* near-black navy */
+  --ifm-color-primary-light: #A56BBF; /* lavender */
+  --ifm-color-primary-lighter: #D6A7E8; /* soft pink-lilac */
+  --ifm-color-primary-lightest: #F6EAFB; /* pale wash */
   --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --docusaurus-highlighted-code-line-bg: rgba(124, 58, 237, 0.06);
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
+/* For readability concerns, you should choose a lighter palette in dark mode. (Image-derived) */
 [data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --ifm-color-primary: #DA77F2; /* bright magenta accent */
+  --ifm-color-primary-dark: #C084E8;
+  --ifm-color-primary-darker: #9F6BE0;
+  --ifm-color-primary-darkest: #7C42B8;
+  --ifm-color-primary-light: #E9C8FB;
+  --ifm-color-primary-lighter: #F3E6FF;
+  --ifm-color-primary-lightest: #FEF7FF;
+  --docusaurus-highlighted-code-line-bg: rgba(218, 119, 242, 0.06);
 }
 
 /* Circular navbar logo */
@@ -42,33 +42,34 @@
   padding: 0 1rem;
 }
 
-.searchContainer input {
+..searchContainer input {
   width: 100% !important;
   border: 1px solid hsl(214, 32%, 91%) !important;
-  border-radius: 18px !important;
+  border-radius: 8px !important;
   background-color: hsl(0, 0%, 100%) !important;
-  padding: 1.5rem 1.25rem !important;
-  font-size: 1.75rem !important;
-  line-height: 2rem !important;
-  height: 120px !important;
+  padding: 0.5rem 0.75rem 0.5rem 2.25rem !important;
+  font-size: 1rem !important;
+  line-height: 44px !important;
+  height: 44px !important;
+  background-position: 0.75rem center !important;
+  background-size: 1rem 1rem !important;
   transition: all 0.12s ease-in-out !important;
-  box-shadow: 0 20px 60px rgba(34, 41, 47, 0.12) !important;
+  box-shadow: 0 4px 12px rgba(34, 41, 47, 0.08) !important;
 }
 
 .searchContainer input:focus {
   outline: none !important;
-  border-color: hsl(262, 83%, 58%) !important;
-  box-shadow: 0 20px 60px rgba(38, 99, 255, 0.16) !important;
-  transform: translateY(-2px) !important;
+  border-color: hsl(262, 44%, 17%) !important;
+  box-shadow: 0 6px 20px rgba(38, 99, 255, 0.12) !important;
 }
 
 .searchContainer input::placeholder {
-  color: hsl(215, 16%, 47%) !important;
+  color: hsl(215, 44%, 50%) !important;
 }
 
 /* Dark mode adjustments */
 [data-theme='dark'] .searchContainer input {
-  background-color: hsl(224, 71%, 6%) !important;
+  background-color: hsla(224, 73%, 6%, 0.268) !important;
   border-color: hsl(215, 28%, 17%) !important;
   color: hsl(213, 31%, 91%) !important;
 }
@@ -85,24 +86,64 @@
 /* Reduce height on mobile so it doesn't take too much space */
 @media (max-width: 640px) {
   .searchContainer .searchInputWrapper { max-width: 100%; }
-  .searchContainer input { height: 64px !important; font-size: 1.125rem !important; padding: 0.75rem 1rem !important; }
+  .searchContainer input { height: 40px !important; font-size: 0.95rem !important; padding: 0.4rem 0.6rem 0.4rem 1.6rem !important; line-height: 40px !important; background-position: 0.75rem center !important; background-size: 1rem 1rem !important; }
 }
 
-/* Homepage-specific search overrides (swizzled SearchBar wrapper) */
-.search-homepage .navbar__search-input {
-  height: 120px !important;
-  font-size: 1.75rem !important;
-  padding: 1.5rem 1.25rem !important;
-  border-radius: 18px !important;
-  box-shadow: 0 20px 60px rgba(34, 41, 47, 0.12) !important;
-}
-
-@media (max-width: 640px) {
-  .search-homepage .navbar__search-input {
-    height: 64px !important;
+/* Make the homepage search more prominent on large screens */
+@media (min-width: 1024px) {
+  .searchContainer .searchInputWrapper {
+    width: 80%;
+    max-width: 1200px;
+    margin: 2rem auto;
+  }
+  .searchContainer input {
     font-size: 1.125rem !important;
-    padding: 0.75rem 1rem !important;
+    padding: 0.6rem 0.9rem 0.6rem 3rem !important;
+    line-height: 48px !important;
+    height: 48px !important;
+    border-radius: 12px !important;
+    box-shadow: 0 8px 24px rgba(34, 41, 47, 0.12) !important;
+    background-color: hsl(0, 0%, 100%) !important;
+    background-position: 1rem center !important;
   }
 }
+
+/* Prominent homepage hero search card */
+.heroBanner .searchContainer .searchInputWrapper {
+  width: min(90%, 1200px);
+  max-width: 1200px;
+  margin: 2rem auto;
+}
+
+.heroBanner .searchContainer input {
+  background: var(--ifm-color-white) !important;
+  color: var(--ifm-font-color-base) !important;
+  border: 1px solid rgba(0,0,0,0.08) !important;
+  min-width: 27ch !important;
+  width: 100% !important;
+  font-size: 1.125rem !important;
+  padding: 0.75rem 1rem 0.75rem 3rem !important;
+  height: 48px !important;
+  line-height: 48px !important;
+  border-radius: 12px !important;
+  box-shadow: 0 10px 30px rgba(34,41,47,0.12) !important;
+  background-position: 1rem center !important;
+  background-size: 1rem 1rem !important;
+  transition: box-shadow 0.18s ease, transform 0.12s ease !important;
+}
+
+.heroBanner .searchContainer input:focus {
+  box-shadow: 0 18px 50px rgba(34,41,47,0.16) !important;
+  transform: translateY(-2px) scale(1.01) !important;
+}
+
+/* Dark theme variant for the hero search */
+html[data-theme='dark'] .heroBanner .searchContainer input {
+  background: var(--ifm-color-emphasis-100) !important;
+  color: var(--ifm-color-white) !important;
+  border: 1px solid rgba(255,255,255,0.06) !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6) !important;
+}
+
 
 
