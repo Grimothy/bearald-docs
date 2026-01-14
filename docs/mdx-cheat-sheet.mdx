@@ -1,0 +1,620 @@
+---
+title: MDX Cheat Sheet
+description: Quick reference for MDX syntax in Docusaurus
+sidebar_position: 2
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# 📚 Docusaurus MDX Cheat Sheet
+
+Quick reference for MDX in Docusaurus.
+
+## 📄 File Structure & Frontmatter
+
+Every MDX file starts with frontmatter (YAML between dashes):
+
+```mdx
+---
+title: Page Title
+description: Short description for SEO
+sidebar_position: 1
+---
+
+# Content goes here
+```
+
+### Common Frontmatter Options
+
+| Option | Purpose |
+|--------|---------|
+| `title` | The page title |
+| `description` | Meta description for SEO |
+| `sidebar_position` | Order in sidebar (lower first) |
+| `sidebar_label` | Custom sidebar label |
+| `id` | Unique identifier |
+
+---
+
+## ✏️ Text Formatting
+
+### Basic Formatting
+
+- **Bold**: `**text**` → **text**
+- *Italic*: `*text*` → *text*
+- ***Bold & Italic***: `***text***` → ***text***
+- `Inline Code`: `` `code` `` → `code`
+- ~~Strikethrough~~: `~~text~~` → ~~text~~
+
+### Headings
+
+```md
+# Heading 1 (avoid in content)
+## Heading 2 (appears in TOC)
+### Heading 3 (appears in TOC)
+#### Heading 4 (document only, not TOC)
+```
+
+:::tip
+Use `##` for main sections, `###` for subsections. Avoid `#` in content—it's your page title.
+:::
+
+---
+
+## 🎯 Admonitions (Tips, Warnings, Notes)
+
+### Basic Syntax
+
+<Tabs>
+<TabItem value="note" label="Note">
+
+```mdx
+:::note
+Standard note with important information.
+:::
+```
+
+:::note
+Standard note with important information.
+:::
+
+</TabItem>
+<TabItem value="tip" label="Tip">
+
+```mdx
+:::tip
+Helpful advice or best practice.
+:::
+```
+
+:::tip
+Helpful advice or best practice.
+:::
+
+</TabItem>
+<TabItem value="info" label="Info">
+
+```mdx
+:::info
+Key information to know.
+:::
+```
+
+:::info
+Key information to know.
+:::
+
+</TabItem>
+<TabItem value="warning" label="Warning">
+
+```mdx
+:::warning
+Caution about potential issues.
+:::
+```
+
+:::warning
+Caution about potential issues.
+:::
+
+</TabItem>
+<TabItem value="danger" label="Danger">
+
+```mdx
+:::danger
+Critical warning - action could cause damage.
+:::
+```
+
+:::danger
+Critical warning - action could cause damage.
+:::
+
+</TabItem>
+</Tabs>
+
+### With Custom Titles
+
+```mdx
+:::tip[Pro Tip]
+This tip has a custom title.
+:::
+
+:::warning[Be Careful]
+This warning has a custom title.
+:::
+```
+
+:::tip[Pro Tip]
+This tip has a custom title.
+:::
+
+### Nested Admonitions
+
+```mdx
+:::info[Parent]
+Content here.
+
+::::warning[Child]
+Use more colons for each nesting level.
+::::
+:::
+```
+
+:::warning Important
+Always close admonitions with `:::` on its own line. Forgetting this breaks rendering.
+:::
+
+---
+
+## 🖼️ Images
+
+### Basic Image
+
+```mdx
+![Alt text for accessibility](/img/docusaurus.png)
+```
+
+Image paths are relative to the `static/` folder. So `/img/docusaurus.png` points to `static/img/docusaurus.png`.
+
+### Centered Image
+
+```mdx
+<div style={{textAlign: 'center'}}>
+  ![Alt text](/img/docusaurus.png)
+</div>
+```
+
+### Centered with Width Control
+
+```mdx
+<div style={{textAlign: 'center', maxWidth: '400px', margin: '0 auto'}}>
+  ![Alt text](/img/docusaurus.png)
+</div>
+```
+
+### Add Padding Below Image
+
+```mdx
+<div style={{textAlign: 'center', marginBottom: '2rem'}}>
+  ![Alt text](/img/logo.png)
+</div>
+```
+
+:::tip
+Always include descriptive alt text for accessibility. Adjust `marginBottom` value (2rem, 1.5rem, 3rem) based on desired spacing.
+:::
+
+---
+
+## 📊 Tables
+
+### Basic Table
+
+```md
+| Feature | Description | Status |
+|---------|-------------|--------|
+| Item A  | Does something | Active |
+| Item B  | Does another thing | Pending |
+```
+
+| Feature | Description | Status |
+|---------|-------------|--------|
+| Item A  | Does something | Active |
+| Item B  | Does another thing | Pending |
+
+### Table Alignment
+
+```md
+| Left | Center | Right |
+|:-----|:------:|------:|
+| Left | Center | Right |
+```
+
+| Left | Center | Right |
+|:-----|:------:|------:|
+| Left | Center | Right |
+
+`:` on left = left-align, both sides = center, right side = right-align
+
+### Table with Code
+
+```md
+| Command | Purpose |
+|---------|---------|
+| `npm start` | Starts dev server |
+| `npm build` | Production build |
+```
+
+| Command | Purpose |
+|---------|---------|
+| `npm start` | Starts dev server |
+| `npm build` | Production build |
+
+:::warning Note
+Docusaurus doesn't support colspan/rowspan. For complex tables, use HTML instead.
+:::
+
+---
+
+## 💻 Code Blocks
+
+### Basic Code Block
+
+````md
+```javascript
+const greeting = "Hello, World!";
+console.log(greeting);
+```
+````
+
+```javascript
+const greeting = "Hello, World!";
+console.log(greeting);
+```
+
+### Code Block with Title
+
+````md
+```javascript title="src/index.js"
+const greeting = "Hello, World!";
+console.log(greeting);
+```
+````
+
+```javascript title="src/index.js"
+const greeting = "Hello, World!";
+console.log(greeting);
+```
+
+### Code Block with Line Highlighting
+
+````md
+```javascript {2,4}
+const greeting = "Hello, World!";
+console.log(greeting);  // Line 2 highlighted
+const farewell = "Goodbye!";
+console.log(farewell);  // Line 4 highlighted
+```
+````
+
+```javascript {2,4}
+const greeting = "Hello, World!";
+console.log(greeting);  // Line 2 highlighted
+const farewell = "Goodbye!";
+console.log(farewell);  // Line 4 highlighted
+```
+
+### Docker Code Block
+
+````md
+```dockerfile title="Dockerfile"
+FROM node:18-alpine
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+EXPOSE 3000
+CMD ["npm", "start"]
+```
+````
+
+```dockerfile title="Dockerfile"
+FROM node:18-alpine
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+EXPOSE 3000
+CMD ["npm", "start"]
+```
+
+### Docker Compose Code Block
+
+````md
+```yaml title="docker-compose.yml"
+version: '3.8'
+services:
+  m3u-editor:
+    image: sparkison/m3u-editor:latest
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./playlists:/app/data
+    environment:
+      - NODE_ENV=production
+```
+````
+
+```yaml title="docker-compose.yml"
+version: '3.8'
+services:
+  m3u-editor:
+    image: sparkison/m3u-editor:latest
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./playlists:/app/data
+    environment:
+      - NODE_ENV=production
+```
+
+:::info Note
+Docker Compose files use YAML syntax, so use ` ```yaml ` not ` ```docker-compose `. Dockerfile uses ` ```dockerfile `.
+:::
+
+---
+
+## 📝 Lists
+
+### Unordered Lists
+
+```md
+- Item one
+- Item two
+  - Nested item
+  - Another nested
+- Item three
+```
+
+- Item one
+- Item two
+  - Nested item
+  - Another nested
+- Item three
+
+You can also use `*` or `+` instead of `-`.
+
+### Ordered Lists
+
+```md
+1. First item
+2. Second item
+   1. Nested numbered item
+   2. Another nested
+3. Third item
+```
+
+1. First item
+2. Second item
+   1. Nested numbered item
+   2. Another nested
+3. Third item
+
+:::info Note
+Docusaurus auto-numbers sequentially, so you can use `1.` for all items and it'll renumber correctly.
+:::
+
+---
+
+## 😎 Emojis
+
+### Unicode Emojis (Recommended)
+
+```md
+This is a tip 🚀
+
+Here's a warning ⚠️
+
+You can use any emoji: 🐶 👍 🎉 📝
+```
+
+This is a tip 🚀
+
+Here's a warning ⚠️
+
+You can use any emoji: 🐶 👍 🎉 📝
+
+Just copy/paste the emoji directly. Works everywhere.
+
+### Where Emojis Work
+
+- Headings
+- Body text
+- Admonition titles
+- Lists
+- Tables
+
+:::warning Legacy Syntax
+The old shortcode syntax `:emoji:` was removed in Docusaurus v3. Use unicode emojis instead.
+:::
+
+---
+
+## 🔗 Links
+
+### Internal Links
+
+```md
+[Link to another doc](/docs/getting-started)
+[Link to a page](/blog/my-post)
+```
+
+Use relative paths without file extensions.
+
+### External Links
+
+```md
+[Docusaurus website](https://docusaurus.io)
+[GitHub Repo](https://github.com/facebook/docusaurus)
+```
+
+[Docusaurus website](https://docusaurus.io)
+
+[GitHub Repo](https://github.com/facebook/docusaurus)
+
+### Link with Title
+
+```md
+[Docusaurus](https://docusaurus.io "Visit Docusaurus")
+```
+
+Hover text appears in the title attribute.
+
+### Anchor Links (Jump Within Document)
+
+```md
+[Jump to Installation](#installation)
+
+## Installation
+
+Your content here...
+```
+
+Docusaurus auto-creates anchors from headings (lowercase, hyphens for spaces).
+
+### Custom Anchors
+
+```md
+## My Heading {#custom-anchor}
+
+[Link to custom](#custom-anchor)
+```
+
+Use curly braces to override the auto-generated anchor if needed.
+
+### Quick Reference
+
+| Type | Syntax | Example |
+|------|--------|---------|
+| Internal | `[text](/path)` | `[Guide](/docs/intro)` |
+| External | `[text](https://url)` | `[Google](https://google.com)` |
+| With Title | `[text](url "title")` | `[Link](url "Hover text")` |
+| Anchor (same page) | `[text](#anchor)` | `[Jump](#installation)` |
+| Custom anchor | `## Heading {#custom}` | `## Setup {#my-setup}` |
+
+---
+
+## ☑️ Checkboxes & Task Lists
+
+### Basic Task List Syntax
+
+```md
+- [x] Completed task
+- [ ] Incomplete task
+- [x] Another completed task
+- [ ] Task to do
+```
+
+- [x] Completed task
+- [ ] Incomplete task
+- [x] Another completed task
+- [ ] Task to do
+
+### With Nesting
+
+```md
+- [x] Main task completed
+  - [x] Subtask 1
+  - [ ] Subtask 2
+- [ ] Main task not done
+  - [x] Subtask completed
+  - [ ] Subtask pending
+```
+
+- [x] Main task completed
+  - [x] Subtask 1
+  - [ ] Subtask 2
+- [ ] Main task not done
+  - [x] Subtask completed
+  - [ ] Subtask pending
+
+:::warning Note
+Docusaurus renders task lists but they're not clickable like on GitHub. The dashes may also appear. For better styling, consider using a custom component or hiding dashes with CSS.
+:::
+
+### Workaround: Manual Lists
+
+If task lists don't render well, use regular lists with emoji:
+
+```md
+- ✅ Completed task
+- ❌ Failed task
+- ⏳ In progress
+- ⭕ Not started
+```
+
+- ✅ Completed task
+- ❌ Failed task
+- ⏳ In progress
+- ⭕ Not started
+
+---
+
+## ⚡ Pro Tips & Gotchas
+
+### Empty Lines Matter
+
+MDX is sensitive to spacing. Always add blank lines before/after:
+
+- Code blocks
+- Admonitions
+- Components
+- Markdown lists inside components
+
+### Closing Admonitions
+
+```mdx
+:::tip
+This is a tip.
+:::
+
+Next paragraph here.
+```
+
+Every admonition **must** end with `:::` on its own line.
+
+### Frontmatter Required
+
+```mdx
+---
+title: My Page
+---
+```
+
+Always include at least `title` in frontmatter. Without it, Docusaurus may have rendering issues.
+
+### JSX and Markdown Mixing
+
+```mdx
+:::tip
+Leave blank lines when mixing markdown and JSX.
+
+<SomeComponent />
+
+This ensures proper parsing.
+:::
+```
+
+:::info
+Leave blank lines when mixing markdown and JSX to ensure proper parsing.
+:::
+
+---
+
+## 📚 Additional Resources
+
+- [Official Docusaurus Documentation](https://docusaurus.io/docs)
+- [MDX Documentation](https://mdxjs.com/)
+- [Markdown Guide](https://www.markdownguide.org/)
